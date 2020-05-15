@@ -40,11 +40,20 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 - [ ] Explain the difference between `Relational Databases` and `SQL`.
 
+      I feel like the question is misleading? from what i can gather, Relational db's are SQL db's and non relation are NoSQL so based on that notion i think what the question is asking me is whats the difference between relation and non-relational. and thats that relational db's defines and manipulates data based on structured query language (SQL)
+      but has a ton of upfront prep time and noSQL is dynamic doesnt require a defined structure first.
+
 - [ ] Why do tables need a `primary key`?
+
+  it ensures row-level accessibility
 
 - [ ] What is the name given to a table column that references the primary key on another table.
 
+      refrence table
+
 - [ ] What do we need in order to have a _many to many_ relationship between two tables.
+
+      You need multiple records in a table associated with multiple records in another table.
 
 ## Minimum Viable Product
 
