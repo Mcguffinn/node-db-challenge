@@ -7,6 +7,10 @@ module.exports = {
   add,
 };
 
+function findById(id) {
+  return db("projects").where({ id }).first();
+}
+
 function findProject() {
   return db("projects");
 }

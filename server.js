@@ -21,7 +21,7 @@ server.get("/", (req, res) => {
 server.use((err, req, res, next) => {
   console.log(`${req.method} Request to ${req.originalUrl}`);
   console.log(err);
-  res.status(500).json(err);
+  res.status(500).json({ error: err.message });
   next();
 });
 
