@@ -7,7 +7,6 @@ const projectRouter = require("./actions/project-router.js");
 const server = express();
 
 //middleware
-server.use(logger);
 server.use(morgan("dev"));
 server.use(express.json());
 
@@ -19,8 +18,11 @@ server.get("/", (req, res) => {
 });
 
 //terminal logger
-function logger(req, res, next) {
+server.use((err, req, res, next) => {
   console.log(`${req.method} Request to ${req.originalUrl}`);
-
+  console.log(err);
+  res.status(500).json(err);
   next();
-}
+});
+
+module.exports = server;
