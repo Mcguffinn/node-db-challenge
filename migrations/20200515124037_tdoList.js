@@ -30,13 +30,13 @@ exports.up = function (knex) {
 
     .createTable("projectResources", (pr) => {
       pr.increments();
-      pr.interger("project_Id")
+      pr.integer("project_Id")
         .notNullable()
-        .refrences("id")
+        .references("id")
         .inTable("projects");
       pr.integer("resource_Id")
         .notNullable()
-        .refrences("id")
+        .references("id")
         .inTable("resources");
     });
 };
