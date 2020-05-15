@@ -5,14 +5,14 @@ module.exports = {
   findResources,
   findTask,
   add,
-  //   addTask,
-  //   addResource,
+  addTask,
+  addResource,
 };
 
-const dbName = "todoList";
+// const dbName = "todoList";
 
 function findById(id) {
-  return db(dbName).where({ id }).first();
+  return db("projects").where({ id }).first();
 }
 
 function findProject() {
@@ -27,22 +27,26 @@ function findTask() {
   return db("tasks");
 }
 
-function add(project) {
-  return db(dbName)
-    .insert(project, "id")
+function add(action) {
+  return db("projects")
+    .insert(action, "id")
+    .then((ids) => {
+      return findById(ids).first();
+    });
+}
+
+function addTask(action) {
+  return db("tasks")
+    .insert(action, "id")
     .then((ids) => {
       return ids[0];
     });
 }
 
-// function addTask(action) {
-//   return db("tasks")
-//     .insert(action, "id")
-//     .then(([id]) => get(id));
-// }
-
-// function addResource(action) {
-//   return db("tasks")
-//     .insert(action, "id")
-//     .then(([id]) => get(id));
-// }
+function addResource(action) {
+  return db("resources")
+    .insert(action, "id")
+    .then((ids) => {
+      return ids[0];
+    });
+}

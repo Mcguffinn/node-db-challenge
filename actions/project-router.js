@@ -5,8 +5,8 @@ const Projects = require("../models/project-model.js");
 
 router.get("/", async (req, res, next) => {
   try {
-    const proc = await Projects.findProject(req.params.id);
-    res.status(200).json({ proc });
+    const project = await Projects.findProject(req.params.id);
+    res.status(200).json({ project });
   } catch (err) {
     next(err);
   }
@@ -31,11 +31,11 @@ router.get("/tasks", async (req, res, next) => {
 });
 
 router.post("/", async (req, res, next) => {
-  const project = req.body;
+  const body = req.body;
 
   try {
-    const proc = await Projects.add(project);
-    res.status(200).json({ proc });
+    const project = await Projects.add(body, "projects");
+    res.status(200).json({ project });
   } catch (err) {
     next(err);
   }
@@ -45,7 +45,7 @@ router.post("/resources", async (req, res, next) => {
   const resources = req.body;
 
   try {
-    const proc = await Projects.add(resources);
+    const proc = await Projects.addResource(resources);
     res.status(200).json({ proc });
   } catch (err) {
     next(err);
@@ -56,7 +56,7 @@ router.post("/tasks", async (req, res, next) => {
   const tasks = req.body;
 
   try {
-    const proc = await Projects.add(tasks);
+    const proc = await Projects.addTask(tasks);
     res.status(200).json({ proc });
   } catch (err) {
     next(err);
